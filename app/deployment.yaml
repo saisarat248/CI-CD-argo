@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+name: argo-demo
+
+spec:
+replicas: 1
+
+selector:
+matchLabels:
+app: argo-demo
+
+template:
+metadata:
+labels:
+app: argo-demo
+
+```
+spec:
+  containers:
+  - name: argo-demo
+    image: yourdockerhubusername/argo-demo:latest
+    ports:
+    - containerPort: 5000
+```
