@@ -1,23 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-
 metadata:
-name: argo-demo
-namespace: argocd
-
+  name: argo-demo
+  namespace: argocd
 spec:
-project: default
-
-source:
-repoURL: [https://github.com/yourgithubusername/ci-cd-argo-demo.git](https://github.com/yourgithubusername/ci-cd-argo-demo.git)
-targetRevision: main
-path: app
-
-destination:
-server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
-namespace: default
-
-syncPolicy:
-automated:
-prune: true
-selfHeal: true
+  project: default
+  source:
+    # Use only one repoURL
+    repoURL: https://github.com/saisarat248/CI-CD-argo.git
+    targetRevision: main
+    path: app  # This points to the folder containing your deployment.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      
